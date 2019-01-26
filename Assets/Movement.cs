@@ -37,10 +37,10 @@ public class Movement : MonoBehaviour
 		if (_rb != null)
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawLine(transform.position, transform.position + new Vector3(_direction.x, _direction.y).normalized * 0.25f);
+			Gizmos.DrawLine(transform.position + transform.up * 0.1f, transform.position + transform.up * 0.1f + new Vector3(_direction.x, _direction.y).normalized * 0.5f);
 			Gizmos.color = Color.blue;
 
-			Gizmos.DrawLine(transform.position, transform.position + new Vector3(Physics2D.gravity.x, Physics2D.gravity.y).normalized * 0.25f);
+			Gizmos.DrawLine(transform.position + transform.up * 0.1f, transform.position + transform.up * 0.1f + new Vector3(Physics2D.gravity.x, Physics2D.gravity.y).normalized * 0.2f);
 		}
 	}
 	private void LateUpdate()
@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
 		_direction = _rb.velocity;
 		if (_direction.sqrMagnitude < 0.01f)
 			_direction = _targetDirection;
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, 0.25f);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position+transform.up*0.1f, _direction, 0.5f, ~(1 << 8));
 		_grounded = false;
 		if(hit)
 		{
@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
 		}
 		else
 		{
-			hit = Physics2D.Raycast(transform.position, -transform.up, 0.2f);
+			hit = Physics2D.Raycast(transform.position + transform.up * 0.1f, -transform.up, 0.2f, ~(1 << 8));
 			if (hit)
 			{
 				faceNormal(hit.normal);
