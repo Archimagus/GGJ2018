@@ -1,15 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: fc5182fe80a83d047943b4cf504bf6e9
 TextureImporter:
   fileIDToRecycleName:
     21300000: Suirrel_Jump_Down_0
     21300002: Suirrel_Jump_Down_1
-=======
-guid: 75ed3e18502518b4897cbea15cc4e584
-TextureImporter:
-  fileIDToRecycleName: {}
->>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -48,20 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< Updated upstream
   spriteMode: 2
-=======
-  spriteMode: 1
->>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
   spritePixelsToUnits: 2048
-=======
-  spritePixelsToUnits: 100
->>>>>>> Stashed changes
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -85,7 +71,6 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< Updated upstream
   - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -166,15 +151,6 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 6818ff8f442eff145990c127a2072471
-=======
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-    outline: []
-    physicsShape: []
-    bones: []
-    spriteID: 2f786b144c9e6c5409cc00b1c352e56d
->>>>>>> Stashed changes
     vertices: []
     indices: 
     edges: []

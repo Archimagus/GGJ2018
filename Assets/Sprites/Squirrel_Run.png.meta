@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: dd7c1f39a8c34bf478b796680a85348b
 TextureImporter:
   fileIDToRecycleName:
@@ -7,11 +6,6 @@ TextureImporter:
     21300002: Squirrel_Run_1
     21300004: Squirrel_Run_2
     21300006: Squirrel_Run_3
-=======
-guid: a77094226830ddc4aa47c9896fca1c0d
-TextureImporter:
-  fileIDToRecycleName: {}
->>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -50,24 +44,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< Updated upstream
   spriteMode: 2
-=======
-  spriteMode: 1
->>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
   spritePixelsToUnits: 2048
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
-=======
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
->>>>>>> Stashed changes
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -89,7 +73,6 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< Updated upstream
   - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -210,15 +193,6 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 935386981599bc7428119f2e665e1bda
-=======
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-    outline: []
-    physicsShape: []
-    bones: []
-    spriteID: 9331597b6d101a64bba253921be8b347
->>>>>>> Stashed changes
     vertices: []
     indices: 
     edges: []
