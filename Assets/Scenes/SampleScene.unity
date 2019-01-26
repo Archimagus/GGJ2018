@@ -457,7 +457,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 0.50402987, y: -0.45314717}
-  - {x: 0.49708605, y: 0.49896902}
+  - {x: 0.50655663, y: 0.4997781}
+  - {x: -0.49558133, y: 0.49956524}
 --- !u!251 &1215941740
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -473,10 +474,10 @@ PlatformEffector2D:
   m_RotationalOffset: -90
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 181.5
+  m_SurfaceArc: 180
   m_UseSideFriction: 1
   m_UseSideBounce: 0
-  m_SideArc: 0
+  m_SideArc: 180
 --- !u!1 &1741897353
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,11 +676,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031576983}
+  - component: {fileID: 2031576986}
   - component: {fileID: 2031576982}
   - component: {fileID: 2031576981}
   - component: {fileID: 2031576984}
-  - component: {fileID: 2031576985}
-  - component: {fileID: 2031576986}
+  - component: {fileID: 2031576987}
   m_Layer: 8
   m_Name: Squirrel
   m_TagString: Player
@@ -783,28 +784,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &2031576985
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031576980}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.07}
-  m_Size: {x: 0.3, y: 0.13}
-  m_Direction: 1
 --- !u!114 &2031576986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,10 +802,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8271d2b8e5c142d41bf8155dd1b7b512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 200
-  MoveForce: 0.1
-  FallMultiplier: 2.5
-  LowJumpMultiplier: 2
+  JumpForce: 8
+  MoveForce: 5
+  LowJumpMultiplier: 3
+--- !u!58 &2031576987
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031576980}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: 0.16}
+  serializedVersion: 2
+  m_Radius: 0.15
 --- !u!1001 &6175281528636938551
 PrefabInstance:
   m_ObjectHideFlags: 0
