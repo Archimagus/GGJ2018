@@ -4,6 +4,7 @@ public class Pickup : MonoBehaviour
 {
 	public Sprite Sprite;
 	public AudioClip Audio;
+	public ParticleSystem CollectionParticles;
 	public int Id=-1;
 
 	private SpriteRenderer _renderer;
@@ -41,6 +42,7 @@ public class Pickup : MonoBehaviour
 	{
 		Player.Instance.CurrentPickup = Id;
 		AudioManager.PlaySound(null, Audio, location: transform.position);
+		Instantiate(CollectionParticles, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 }

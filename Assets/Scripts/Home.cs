@@ -2,6 +2,8 @@
 
 public class Home : MonoBehaviour
 {
+	public ParticleSystem NewItemParticles;
+	public AudioClip NewItemSound;
 	public Transform PlayerStartingPosition;
 	public GameObject[] Pickups;
 
@@ -21,8 +23,9 @@ public class Home : MonoBehaviour
 			if (PlayerPrefs.GetInt($"PlayerItems_{i}", 0) == 0)
 			{
 				PlayerPrefs.SetInt($"PlayerItems_{i}", 1);
-				// New Item Particles
-				// New Item Sound
+				Instantiate(NewItemParticles, Pickups[i].transform.position, Quaternion.identity);
+				if(NewItemSound != null)
+					AudioManager.PlaySound(null, NewItemSound);
 			}
 		}
 	}

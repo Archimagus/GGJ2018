@@ -11,10 +11,14 @@ public class Player : MonoBehaviour
 	{
 		if(Instance != null)
 		{
-			Destroy(this);
+			Destroy(gameObject);
 			return;
 		}
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+		for (int i = 0; i < 10; i++)
+		{
+			PlayerPrefs.SetInt($"PlayerItems_{i}", 0);
+		}
 	}
 }

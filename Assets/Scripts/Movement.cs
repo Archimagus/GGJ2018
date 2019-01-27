@@ -34,6 +34,20 @@ public class Movement : MonoBehaviour
 		}
 	}
 
+	private void OnLevelWasLoaded(int level)
+	{
+		if (Player.Instance.gameObject != gameObject)
+			return;
+		if(level == 1)
+		{
+			transform.position = GameManager.Instance.PlayerStartLocation.position;
+			var vCam = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
+			vCam.Follow = transform;
+			if(_rb != null)
+				_rb.velocity = Vector2.zero;
+		}
+	}
+
 	private void OnDrawGizmos()
 	{
 		if (_rb != null)
@@ -77,12 +91,7 @@ public class Movement : MonoBehaviour
 		_grounded = false;
 
 		var hits = Physics2D.RaycastAll(_collider.bounds.center, _direction, 0.4f, ~(1 << 8));
-		if (hits.Any(hit => hit.collider.CompareTag("Teleporter")))
-		{
-			var tp = hits.First(hit => hit.collider.CompareTag("Teleporter")).collider.GetComponent<Teleporter>();
-			transform.position = tp.Destination;
-		}
-		if (hits.Any(hit => Vector2.Dot(_targetDirection, hit.normal) < 0))
+		if (hits.Any(hit => hit.collider.CompareTag("Climbable") && Vector2.Dot(_targetDirection, hit.normal) < 0))
 		{
 			var h = hits.First(hit => Vector2.Dot(_targetDirection, hit.normal) < 0);
 			faceNormal(h.normal);

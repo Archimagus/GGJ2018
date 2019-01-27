@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	public Transform PlayerStartLocation;
 	private GameTime _gameTime;
 	private MenuStack _menuStack;
 	public static GameManager Instance { get; private set; }

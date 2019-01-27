@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Teleporter
   - Branch
+  - Climbable
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Teleporter
   - PostProcessing
-  - 
+  - Pickup
   - 
   - 
   - 

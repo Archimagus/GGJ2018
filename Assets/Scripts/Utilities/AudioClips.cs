@@ -3,5 +3,7 @@ public enum AudioClips
 {
 	audiomissing,
 	ButtonClick,
-	ButtonHover
+	ButtonHover,
+	climb01,
+	climb02
 }
