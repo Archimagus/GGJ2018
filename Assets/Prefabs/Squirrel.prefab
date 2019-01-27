@@ -10,10 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6956944349041773954}
   - component: {fileID: 6956944349041773967}
+  - component: {fileID: 3233297952185653404}
   - component: {fileID: 6956944349041773955}
   - component: {fileID: 6956944349041773952}
   - component: {fileID: 6956944349041773965}
   - component: {fileID: 6956944349041773966}
+  - component: {fileID: 8952427245403407745}
   m_Layer: 8
   m_Name: Squirrel
   m_TagString: Player
@@ -50,6 +52,19 @@ MonoBehaviour:
   JumpForce: 8
   MoveForce: 5
   LowJumpMultiplier: 3
+--- !u!114 &3233297952185653404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956944349041773953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e05043c8d3b9b44da5a6f6e4145b1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentPickup: -1
 --- !u!212 &6956944349041773955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -84,8 +99,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1535041891
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4afe4d94b70ef049bceb9b313d03f3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,3 +169,11 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: 0.16}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!81 &8952427245403407745
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956944349041773953}
+  m_Enabled: 1

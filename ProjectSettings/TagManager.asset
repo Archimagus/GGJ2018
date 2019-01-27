@@ -17,7 +17,7 @@ TagManager:
   - 
   - Player
   - Teleporter
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -40,6 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2586167645
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1535041891
+    locked: 0
+  - name: Overlay
+    uniqueID: 3803872025
     locked: 0
