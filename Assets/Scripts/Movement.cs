@@ -85,7 +85,6 @@ public class Movement : MonoBehaviour
 		_rb.velocity += _targetDirection * Time.fixedDeltaTime;
 
 
-
 		_direction = _rb.velocity;
 
 		_grounded = false;
@@ -94,6 +93,8 @@ public class Movement : MonoBehaviour
 		if (hits.Any(hit => hit.collider.CompareTag("Climbable") && Vector2.Dot(_targetDirection, hit.normal) < 0))
 		{
 			var h = hits.First(hit => Vector2.Dot(_targetDirection, hit.normal) < 0);
+			if (h.collider.gameObject.layer == LayerMask.NameToLayer("Branch") && _direction.y > 0)
+				return;
 			faceNormal(h.normal);
 		}
 		else
@@ -101,6 +102,8 @@ public class Movement : MonoBehaviour
 			var hit = Physics2D.Raycast(_collider.bounds.center, -transform.up, 0.5f, ~((1 << 8) | (1 << 9)));
 			if (hit && Vector2.Dot(-transform.up, hit.normal) < 0)
 			{
+				if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Branch") && _direction.y > 0)
+					return;
 				faceNormal(hit.normal);
 			}
 			else
