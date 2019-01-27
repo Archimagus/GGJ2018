@@ -3,7 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	public Transform PlayerStartLocation;
+	[SerializeField]private Transform _playerStartLocation;
+	public Transform PlayerStartLocation
+	{
+		get
+		{
+			if(_playerStartLocation == null)
+				_playerStartLocation = GameObject.Find("PlayerStart").transform;
+			return _playerStartLocation;
+		}
+	}
 	private GameTime _gameTime;
 	private MenuStack _menuStack;
 	public static GameManager Instance { get; private set; }
@@ -15,6 +24,8 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 		Instance = this;
+
+		DontDestroyOnLoad(gameObject);
 
 		_gameTime = Resources.Load<GameTime>("GameTime");
 		if (_gameTime == null)
@@ -38,5 +49,10 @@ public class GameManager : MonoBehaviour
 	public void QuitToMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
+	}
+	private void OnLevelWasLoaded(int level)
+	{
+		if(level == 0)
+			Destroy(gameObject);
 	}
 }

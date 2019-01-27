@@ -6,11 +6,11 @@ public class MainMenu : MonoBehaviour
 {
 	[Header("Menu Stuff")]
 	[SerializeField] private Button _quitButton = null;
+	[SerializeField] private AudioClip _music;
 
 	private GameTime _gameTime;
 	private GameData _gamedata;
 	private MenuStack _menuStack;
-
 	private void Awake()
 	{
 		_gameTime = Resources.Load<GameTime>("GameTime");
@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
 
 		if (Application.platform == RuntimePlatform.WebGLPlayer)
 			_quitButton.gameObject.SetActive(false);
+		AudioManager.PlayMusic(_music);
 	}
 
 	private void Update()

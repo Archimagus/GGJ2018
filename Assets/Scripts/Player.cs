@@ -21,4 +21,9 @@ public class Player : MonoBehaviour
 			PlayerPrefs.SetInt($"PlayerItems_{i}", 0);
 		}
 	}
+	private void OnLevelWasLoaded(int level)
+	{
+		if (level == 0)
+			Destroy(gameObject);
+	}
 }

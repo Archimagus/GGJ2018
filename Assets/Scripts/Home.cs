@@ -6,6 +6,8 @@ public class Home : MonoBehaviour
 	public AudioClip NewItemSound;
 	public Transform PlayerStartingPosition;
 	public GameObject[] Pickups;
+	public GameObject[] FinalObjectsToEnable;
+	public GameObject[] FinalObjectsToDisable;
 
 	void Start()
 	{
@@ -26,6 +28,19 @@ public class Home : MonoBehaviour
 				Instantiate(NewItemParticles, Pickups[i].transform.position, Quaternion.identity);
 				if(NewItemSound != null)
 					AudioManager.PlaySound(null, NewItemSound);
+			}
+		}
+		if(Player.Instance.FoundPickups.Count == Pickups.Length)
+		{
+			Player.Instance.gameObject.SetActive(false);
+			//Game Over;
+			foreach (var item in FinalObjectsToDisable)
+			{
+				item.SetActive(false);
+			}
+			foreach (var item in FinalObjectsToEnable)
+			{
+				item.SetActive(true);
 			}
 		}
 	}
