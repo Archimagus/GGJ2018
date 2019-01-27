@@ -90,6 +90,11 @@ public class Movement : MonoBehaviour
 		_grounded = false;
 
 		var hits = Physics2D.RaycastAll(_collider.bounds.center, _direction, 0.4f, ~(1 << 8));
+		//if (hits.Any(hit => hit.collider.CompareTag("HoleBlocker")))
+		//{
+		//	var h = hits.First(hit => hit.collider.CompareTag("HoleBlocker"));
+		//	h.collider.enabled = false;
+		//}
 		if (hits.Any(hit => hit.collider.CompareTag("Climbable") && Vector2.Dot(_targetDirection, hit.normal) < 0))
 		{
 			var h = hits.First(hit => Vector2.Dot(_targetDirection, hit.normal) < 0);
