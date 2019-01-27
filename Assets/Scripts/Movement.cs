@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
 		_targetDirection = (Vector2)transform.right * Vector2.Dot(transform.right, _targetDirection) * MoveForce;
 		if (_grounded && Input.GetKeyDown(KeyCode.Space))
 		{
-			_rb.velocity += (Vector2.up *20 + -_gravity).normalized * JumpForce;
+			_rb.velocity += (Vector2.up * 20 + -_gravity).normalized * JumpForce;
 		}
 	}
 
@@ -46,42 +46,49 @@ public class Movement : MonoBehaviour
 		}
 	}
 	private void LateUpdate()
-	{		
+	{
 		_animator.SetFloat("Horizontal", Vector2.Dot(transform.right, _rb.velocity));
 		_animator.SetFloat("Vertical", _rb.velocity.y);
 		_animator.SetBool("Grounded", _grounded);
 	}
 	private void FixedUpdate()
 	{
-		//if (_grounded && Vector2.Dot(_targetDirection, _rb.velocity) < 1)
-		//	_rb.velocity *= 0.5f;
-
-		_rb.velocity += _gravity * Time.fixedDeltaTime;
-		_rb.velocity += _targetDirection * Time.fixedDeltaTime;
-
-		if (_grounded && _targetDirection.SqrMagnitude() < 0.01f && !Input.GetButton("Jump"))
-			_rb.velocity *= 0.5f;
-		if (_grounded && _rb.velocity.sqrMagnitude < _targetDirection.sqrMagnitude)
-			_rb.velocity += _targetDirection*0.5f;
-
-		if(!_grounded && _gravity.y < 0 )
+		if (_grounded)
+		{
+			if (_targetDirection.SqrMagnitude() < 0.01f && !Input.GetButton("Jump"))
+				_rb.velocity *= (Vector2)(transform.right * 0.5f + transform.up);
+			if (_rb.velocity.sqrMagnitude < _targetDirection.sqrMagnitude)
+				_rb.velocity += _targetDirection * 0.5f;
+		}
+		else if (_gravity.y < 0)
 		{
 			if (_rb.velocity.y > 0 && !Input.GetButton("Jump"))
 				_rb.velocity += _gravity * (LowJumpMultiplier - 1) * Time.fixedDeltaTime;
 		}
 
+		_rb.velocity += _gravity * Time.fixedDeltaTime;
+		_rb.velocity += _targetDirection * Time.fixedDeltaTime;
+
+
+
 		_direction = _rb.velocity;
 
 		_grounded = false;
-		
-		RaycastHit2D hit = Physics2D.Raycast(_collider.bounds.center, _direction, 0.3f, ~(1 << 8));
-		if(hit && Vector2.Dot(_targetDirection, hit.normal) < 0)
+
+		var hits = Physics2D.RaycastAll(_collider.bounds.center, _direction, 0.4f, ~(1 << 8));
+		if (hits.Any(hit => hit.collider.CompareTag("Teleporter")))
 		{
-			faceNormal(hit.normal);
+			var tp = hits.First(hit => hit.collider.CompareTag("Teleporter")).collider.GetComponent<Teleporter>();
+			transform.position = tp.Destination;
+		}
+		if (hits.Any(hit => Vector2.Dot(_targetDirection, hit.normal) < 0))
+		{
+			var h = hits.First(hit => Vector2.Dot(_targetDirection, hit.normal) < 0);
+			faceNormal(h.normal);
 		}
 		else
 		{
-			hit = Physics2D.Raycast(_collider.bounds.center, -transform.up, 0.3f, ~(1 << 8));
+			var hit = Physics2D.Raycast(_collider.bounds.center, -transform.up, 0.5f, ~((1 << 8) | (1 << 9)));
 			if (hit && Vector2.Dot(-transform.up, hit.normal) < 0)
 			{
 				faceNormal(hit.normal);
@@ -97,7 +104,7 @@ public class Movement : MonoBehaviour
 	{
 		_groundNormal = normal;
 		_grounded = grounded;
-		_gravity = -_groundNormal*9.81f;
+		_gravity = -_groundNormal * 9.81f;
 		float angle = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg + -90;
 		var q = Quaternion.AngleAxis(angle, Vector3.forward);
 		transform.rotation = q;
