@@ -3,7 +3,7 @@
 public class Home : MonoBehaviour
 {
 	public Transform PlayerStartingPosition;
-	public SpriteRenderer[] Pickups;
+	public GameObject[] Pickups;
 
 	void Start()
 	{
@@ -17,7 +17,7 @@ public class Home : MonoBehaviour
 		}
 		foreach (var i in p.FoundPickups)
 		{
-			Pickups[i].enabled = true;
+			Pickups[i]?.SetActive(true);
 			if (PlayerPrefs.GetInt($"PlayerItems_{i}", 0) == 0)
 			{
 				PlayerPrefs.SetInt($"PlayerItems_{i}", 1);
