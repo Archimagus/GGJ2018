@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
 		_animator.SetFloat("Horizontal", Vector2.Dot(transform.right, _rb.velocity));
 		_animator.SetFloat("Vertical", _rb.velocity.y);
 		_animator.SetBool("Grounded", _grounded);
-		_animator.SetBool("Wall", Mathf.Abs(transform.right.y) > 0.5f);
+		_animator.SetFloat("Wall", Mathf.Max(Mathf.Abs(transform.right.y), -transform.up.y));
 	}
 	private void FixedUpdate()
 	{
