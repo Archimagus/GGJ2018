@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6956944349041773965}
   - component: {fileID: 6956944349041773966}
   - component: {fileID: 8952427245403407745}
+  - component: {fileID: 5659660953762654217}
   m_Layer: 8
   m_Name: Squirrel
   m_TagString: Player
@@ -177,3 +178,27 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6956944349041773953}
   m_Enabled: 1
+--- !u!114 &5659660953762654217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956944349041773953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16feee01bfbe3284b880ae7cb90eb6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  loop: 0
+  maxPitchUp: -0.03
+  maxPitchDown: 0.03
+  maxVolumeUp: 1.025
+  maxVolumeDOwn: 0.971
+  minRepeadDelay: 0
+  maxRepeadDelay: 0
+  SoundType: 1
+  Clips:
+  - {fileID: 8300000, guid: d8b14f1fc94c6a54b8ba38a0e0d2a012, type: 3}
+  - {fileID: 8300000, guid: 7f9e68c04ed7aa14c8c4be17c12a8124, type: 3}

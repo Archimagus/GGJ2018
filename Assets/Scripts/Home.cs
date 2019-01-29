@@ -17,22 +17,21 @@ public class Home : MonoBehaviour
 		if (p.CurrentPickup > -1)
 		{
 			p.FoundPickups.Add(p.CurrentPickup);
-			p.CurrentPickup = -1;
 		}
 		foreach (var i in p.FoundPickups)
 		{
 			Pickups[i]?.SetActive(true);
-			if (PlayerPrefs.GetInt($"PlayerItems_{i}", 0) == 0)
+			if (i == p.CurrentPickup)
 			{
-				PlayerPrefs.SetInt($"PlayerItems_{i}", 1);
 				Instantiate(NewItemParticles, Pickups[i].transform.position, Quaternion.identity);
-				if(NewItemSound != null)
+				if (NewItemSound != null)
 					AudioManager.PlaySound(null, NewItemSound);
 			}
 		}
-		if(Player.Instance.FoundPickups.Count == Pickups.Length)
+		p.CurrentPickup = -1;
+		if (Player.Instance.FoundPickups.Count == Pickups.Length)
 		{
-			Player.Instance.gameObject.SetActive(false);
+			Destroy(Player.Instance.gameObject);
 			//Game Over;
 			foreach (var item in FinalObjectsToDisable)
 			{

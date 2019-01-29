@@ -7,5 +7,8 @@ public enum AudioClips
 	ButtonHover,
 	squirrelawayOST,
 	climb01,
-	climb02
+	climb02,
+	NestPickup,
+	NutCrack,
+	Stick
 }

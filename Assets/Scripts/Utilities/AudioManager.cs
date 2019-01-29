@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -71,8 +72,7 @@ public static class AudioManager
 			Mixer.SetFloat("masterVolume", vol);
 		}
 	}
-
-
+	
 	public static float SoundEffectsVolume
 	{
 		get { return PlayerPrefs.GetFloat("effectsVolume", 1.0f).toLin(); }
@@ -111,6 +111,24 @@ public static class AudioManager
 			var vol = value.todB();
 			PlayerPrefs.SetFloat("interfaceVolume", vol);
 			Mixer.SetFloat("interfaceVolume", vol);
+		}
+	}
+	internal static float GetVolume(SoundType soundType)
+	{
+		switch (soundType)
+		{
+			case SoundType.SoundEffect:
+				return SoundEffectsVolume;
+			case SoundType.Ambience:
+				return AmbienceVolume;
+			case SoundType.Music:
+				return MusicVolume;
+			case SoundType.Interface:
+				return InterfaceVolume;
+			case SoundType.Dialogue:
+				return DialogueVolume;
+			default:
+				return 0;
 		}
 	}
 	public static float DialogueVolume

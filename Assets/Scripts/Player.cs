@@ -16,10 +16,6 @@ public class Player : MonoBehaviour
 		}
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
-		for (int i = 0; i < 10; i++)
-		{
-			PlayerPrefs.SetInt($"PlayerItems_{i}", 0);
-		}
 	}
 	private void OnLevelWasLoaded(int level)
 	{
