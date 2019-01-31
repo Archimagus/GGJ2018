@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
 		_targetDirection.x = Input.GetAxis("Horizontal");
 		_targetDirection.y = Input.GetAxis("Vertical");
 		_targetDirection = (Vector2)transform.right * Vector2.Dot(transform.right, _targetDirection) * MoveForce;
-		if (_grounded && Input.GetKeyDown(KeyCode.Space))
+		if (_grounded && Input.GetButtonDown("Jump"))
 		{
 			_rb.velocity += (Vector2.up * 20 + -_gravity).normalized * JumpForce;
 		}

@@ -60,6 +60,8 @@ namespace Cinemachine.Utility
             for (int i = 0; i < numSteps; ++i)
             {
                 pos += vel * dt;
+				if (float.IsNaN(vel.x))
+					return pos;
                 Vector3 vel2 = vel + (accel * dt);
                 accel = Quaternion.FromToRotation(vel, vel2) * accel;
                 vel = vel2;

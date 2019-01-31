@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -6,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
 	[Header("Menu Stuff")]
 	[SerializeField] private Button _quitButton = null;
-	[SerializeField] private AudioClip _music;
+	[SerializeField] private GameObject _mainMenuPanel = null;
+	[SerializeField] private AudioClip _music = null;
 
 	private GameTime _gameTime;
 	private GameData _gamedata;
@@ -27,6 +29,14 @@ public class MainMenu : MonoBehaviour
 			_quitButton.gameObject.SetActive(false);
 		AudioManager.PlayMusic(_music);
 	}
+	private void OnEnable()
+	{
+		_menuStack.OpenMenu(_mainMenuPanel);
+		if (!Input.mousePresent)
+		{
+			EventSystem.current.SetSelectedGameObject(GameObject.Find("NewGameButton").gameObject);
+		}
+	}
 
 	private void Update()
 	{
@@ -35,6 +45,13 @@ public class MainMenu : MonoBehaviour
 			_menuStack.CloseMenu(out int closed);
 			if(closed == 0)
 				_gamedata.QuitGame();
+		}
+		var es = EventSystem.current;
+		if(_mainMenuPanel.activeInHierarchy &&
+			((Mathf.Abs( Input.GetAxis("Vertical")) > 0.01f &&  es.currentSelectedGameObject == null) ||
+				(es.currentSelectedGameObject != null && es.currentSelectedGameObject.activeInHierarchy == false)))
+		{
+			es.SetSelectedGameObject(GameObject.Find("NewGameButton").gameObject);
 		}
 	}
 }

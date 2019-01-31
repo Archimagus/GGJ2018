@@ -579,6 +579,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -601,7 +602,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 3c27ea79-47df-4009-8425-6f37e177e419
   framebufferDepthMemorylessMode: 0
-  projectName: GGJ2019
+  projectName: GGJ2019-Squirrel Away
   organizationId: archimagus
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
