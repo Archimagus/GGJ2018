@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 	[Header("Menu Stuff")]
 	[SerializeField] private Button _quitButton = null;
 	[SerializeField] private GameObject _mainMenuPanel = null;
+	[SerializeField] private GameObject _settingPanel = null;
 	[SerializeField] private AudioClip _music = null;
 
 	private GameTime _gameTime;
@@ -27,19 +28,11 @@ public class MainMenu : MonoBehaviour
 		if (Application.platform == RuntimePlatform.WebGLPlayer)
 			_quitButton.gameObject.SetActive(false);
 		AudioManager.PlayMusic(_music);
-		_menuStack.OpenMenu(_mainMenuPanel);
+
 		if (!Input.mousePresent)
 		{
 			EventSystem.current.SetSelectedGameObject(GameObject.Find("NewGameButton").gameObject);
 		}
-	}
-	private void OnDestroy()
-	{
-		int menusClosed = 0;
-		do
-		{
-			_menuStack.CloseMenu(out menusClosed);
-		}while(menusClosed >0);
 	}
 
 	private void Update()
@@ -57,5 +50,6 @@ public class MainMenu : MonoBehaviour
 		{
 			es.SetSelectedGameObject(GameObject.Find("NewGameButton").gameObject);
 		}
+		_mainMenuPanel.SetActive(!_settingPanel.activeInHierarchy);
 	}
 }

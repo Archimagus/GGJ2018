@@ -17,14 +17,26 @@ public class MenuStack : ScriptableObject
 	{
 		OpenMenu(menu, true);
 	}
-	public void OpenMenu(GameObject menu, bool diableCurrent)
+	public void OpenMenu(GameObject menu, bool disableCurrent)
 	{
-		if (_menus.Any() && diableCurrent)
+		if (_menus.Any() && disableCurrent)
 			_menus.Peek().MenuItem.SetActive(false);
 
-		_menus.Push(new MenuStackItem(menu, diableCurrent));
+		_menus.Push(new MenuStackItem(menu, disableCurrent, true));
 		menu.SetActive(true);
 		_gameTime.MenuPause = true;
+	}
+	public void OpenNonPausingMenu(GameObject menu)
+	{
+		OpenNonPausingMenu(menu, true);
+	}
+	public void OpenNonPausingMenu(GameObject menu, bool disableCurrent)
+	{
+		if (_menus.Any() && disableCurrent)
+			_menus.Peek().MenuItem.SetActive(false);
+
+		_menus.Push(new MenuStackItem(menu, disableCurrent, false));
+		menu.SetActive(true);
 	}
 	public void CloseMenu(out int menusClosed)
 	{
@@ -38,7 +50,7 @@ public class MenuStack : ScriptableObject
 			menu = _menus.Pop();
 			menu.MenuItem.SetActive(false);
 			menusClosed++;
-			if (!_menus.Any())
+			if (!_menus.Any(m=>m.Pausing))
 			{
 				_gameTime.MenuPause = false;
 			}
@@ -56,10 +68,12 @@ public class MenuStack : ScriptableObject
 	{
 		public GameObject MenuItem;
 		public bool Independent;
-		public MenuStackItem(GameObject menuItem, bool independent)
+		public bool Pausing;
+		public MenuStackItem(GameObject menuItem, bool independent, bool pausing)
 		{
 			MenuItem = menuItem;
 			Independent = independent;
+			Pausing = pausing;
 		}
 	}
 }

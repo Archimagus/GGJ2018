@@ -200,6 +200,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4863613884843880189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &669333932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4863613884707391348, guid: fbe0b2bd4f063a24ca260b739d70f560,
+    type: 3}
+  m_PrefabInstance: {fileID: 4863613884843880189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4863613884843880189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,6 +593,11 @@ PrefabInstance:
       propertyPath: _mainMenuPanel
       value: 
       objectReference: {fileID: 628700617}
+    - target: {fileID: 4863613884279792871, guid: fbe0b2bd4f063a24ca260b739d70f560,
+        type: 3}
+      propertyPath: _settingPanel
+      value: 
+      objectReference: {fileID: 669333932}
     - target: {fileID: 4863613884449420842, guid: fbe0b2bd4f063a24ca260b739d70f560,
         type: 3}
       propertyPath: m_LocalScale.x

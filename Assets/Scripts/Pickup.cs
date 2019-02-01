@@ -34,13 +34,17 @@ public class Pickup : MonoBehaviour
 			if (Player.Instance.CurrentPickup == -1)
 				collect();
 			else
+			{
 				AudioManager.PlaySound(null, AudioClips.audiomissing);
+				InventoryImage.Instance.Flash();
+			}
 		}
 	}
 
 	private void collect()
 	{
 		Player.Instance.CurrentPickup = Id;
+		InventoryImage.Instance.SetSprite(Sprite);
 		AudioManager.PlaySound(null, Audio, location: transform.position);
 		Instantiate(CollectionParticles, transform.position, Quaternion.identity);
 		Destroy(gameObject);
