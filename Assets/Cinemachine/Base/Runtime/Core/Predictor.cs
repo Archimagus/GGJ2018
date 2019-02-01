@@ -59,9 +59,9 @@ namespace Cinemachine.Utility
             Vector3 accel = m_Accel.IsEmpty() ? Vector3.zero : m_Accel.Value();
             for (int i = 0; i < numSteps; ++i)
             {
-                pos += vel * dt;
 				if (float.IsNaN(vel.x))
 					return pos;
+                pos += vel * dt;
                 Vector3 vel2 = vel + (accel * dt);
                 accel = Quaternion.FromToRotation(vel, vel2) * accel;
                 vel = vel2;
