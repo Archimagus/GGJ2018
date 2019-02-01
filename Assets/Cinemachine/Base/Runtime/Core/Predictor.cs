@@ -55,17 +55,23 @@ namespace Cinemachine.Utility
             int numSteps = Mathf.Min(Mathf.RoundToInt(lookaheadTime / Time.deltaTime), 6);
             float dt = lookaheadTime / numSteps;
             Vector3 pos = m_Position;
-            Vector3 vel = m_Velocity.IsEmpty() ? Vector3.zero : m_Velocity.Value();
-            Vector3 accel = m_Accel.IsEmpty() ? Vector3.zero : m_Accel.Value();
-            for (int i = 0; i < numSteps; ++i)
-            {
-				if (float.IsNaN(vel.x))
-					return pos;
-                pos += vel * dt;
-                Vector3 vel2 = vel + (accel * dt);
-                accel = Quaternion.FromToRotation(vel, vel2) * accel;
-                vel = vel2;
-            }
+			if (Time.deltaTime < float.Epsilon)
+				return pos;
+			try
+			{
+				Vector3 vel = m_Velocity.IsEmpty() ? Vector3.zero : m_Velocity.Value();
+				Vector3 accel = m_Accel.IsEmpty() ? Vector3.zero : m_Accel.Value();
+				for (int i = 0; i < numSteps; ++i)
+				{
+					if (float.IsNaN(vel.x))
+						return pos;
+					pos += vel * dt;
+					Vector3 vel2 = vel + (accel * dt);
+					accel = Quaternion.FromToRotation(vel, vel2) * accel;
+					vel = vel2;
+				}
+			}
+			catch { }
             return pos;
         }
     }
